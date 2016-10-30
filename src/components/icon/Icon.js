@@ -1,12 +1,17 @@
 // @flow
 import React from 'react'
-import {compose, join, ap} from 'ramda'
+import {compose, join, ap, omit} from 'ramda'
+
+
+const Button = props => <button {...props}/>
+const Div = props =>  <div {...props}/>
 
 type Props = {
   icon: string,
   size?: "1" | "2" | "3" | "4" | "5",
   text?: string,
-  className?: string
+  className?: string,
+  onClick? : Function
 }
 const iconClasses = [
    () => 'icon fa',
@@ -14,17 +19,14 @@ const iconClasses = [
   ({size}) => size ? `fa-${size}x`: ''
 ]
 const iconClass = compose(join(' '), ap(iconClasses), a => [a])
+
 export default (props: Props) => {
-  const {className = '', text} = props
-  if (text) {
+  const {className = '', text, onClick} = props
+  const Elem = onClick ? Button : Div
     return (
-      <div className={`text-center ${className}`}>
+      <Elem className={`text-center ${className}`} onClick={onClick}>
         <i className={iconClass(props)}></i>
-        <div className="text-caps text-xs"> {text} </div>
-      </div>
+        { text  ? <div className="text-caps text-xs"> {text} </div> : null }
+      </Elem>
     )
-  }
-  return (
-    <i className={iconClass(props) + ' ' + className}></i>
-  )
 }

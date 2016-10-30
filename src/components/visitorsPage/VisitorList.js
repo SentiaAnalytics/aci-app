@@ -7,12 +7,14 @@ import Header from '../header/Header.js'
 import NavBar from '../navbar/Navbar.js'
 
 type Props = {
+  dispatch: Function,
+  location: Location,
   visitors: Visitor[],
-  selectedVisitor: string
+  selectedVisitor: ?string
 }
 
-export default curry((dispatch, props: Props, _) => {
-  const {selectedVisitor, visitors} = props
+export default (props: Props) => {
+  const {dispatch, selectedVisitor, visitors, location} = props
   return (
     <div className="flex-column">
       <Header title="Visitors"/>
@@ -28,7 +30,7 @@ export default curry((dispatch, props: Props, _) => {
           </ul>
         </div>
       </div>
-      <NavBar/>
+      <NavBar {...{dispatch, location}} />
     </div>
   )
-})
+}

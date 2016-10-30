@@ -1,6 +1,5 @@
 //@flow
 import React from 'react'
-import type {Location} from '../../Model'
 import {map} from 'ramda'
 import {Link} from 'react-router'
 

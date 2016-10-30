@@ -28,9 +28,7 @@ const Right = (dispatch, {id, selected}) => {
   const onClick = () => dispatch(selectVisitor(selected ? null : id))
   return (
     <div style={{width: '100px'}} className="media-right padding-base text-right">
-      <button onClick={onClick}>
         <Icon icon="plus-square-o" className="text-secondary" size="2" onClick={onClick}/>
-      </button>
     </div>
   )
 }

@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import type {Visitor, Location} from '../../Model'
+import type {Visitor} from '../../Model'
 import {curry} from 'ramda'
 import {fullName} from '../../util/user.js'
 import Icon from '../icon/Icon.js'

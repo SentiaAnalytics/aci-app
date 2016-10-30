@@ -2,20 +2,23 @@
 import React from 'react'
 import {Match, Redirect} from 'react-router'
 import {curry, find} from 'ramda'
-import type {Visitor} from '../../Model'
 import Header from '../header/Header'
 import NavBar from '../navbar/Navbar'
 import {fullName} from '../../util/user'
 import {Tabs, Tab, TabPane} from '../tabs/Tabs'
 import {Slider, Slide} from '../slider/Slider'
-import {Link} from 'react-router'
 import VisitorProfileOverview from './VisitorProfileOverview'
+import type {Visitor} from '../../Model.js'
+
 type Props = {
-  visitors: Visitor[]
+  visitors: Visitor[],
+  visitorid: string,
+  dispatch: Function
 }
 
-export default curry((dispatch, props:Props, {params, location}) => {
-  const visitor = find(x => x.id === params.id, props.visitors)
+export default (props:Props) => {
+  const {visitors, dispatch, visitorid} = props
+  const visitor = find(x => x.id === visitorid, props.visitors) || {}
   const {user, car} = visitor;
   const {hash} = location
   return (
@@ -33,8 +36,7 @@ export default curry((dispatch, props:Props, {params, location}) => {
           <Slide href="#overview">{VisitorProfileOverview(dispatch, {visitor})}</Slide>
         </Slider>
       </div>
-    <NavBar/>
+    {NavBar({dispatch, location})}
   </div>
   )
-
-})
+}

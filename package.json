@@ -53,8 +53,11 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
+    "flow-bin": "^0.33.0",
+    "flow-typed": "^2.0.0",
     "history": "^4.3.0",
-    "ramda": "^0.22.1",
+    "path-to-regexp": "^1.6.0",
+    "ramda": "0.21.0",
     "react": "^15.3.2",
     "react-bootstrap": "^0.30.5",
     "react-dom": "^15.3.2",

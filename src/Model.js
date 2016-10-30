@@ -17,15 +17,8 @@ export type Visitor = {
   car: Car
 }
 
-export type Location = {
-  hash: string,
-  pathname: string,
-  query: ?string,
-  search: string,
-  state: ?string
-}
-
 export type Model = {
+  location: Location,
   selectedVisitor: ?string,
   visitors: Visitor[]
 }
@@ -49,7 +42,8 @@ const defaultVisitor = id => ({
 
 })
 
-export const defaultModel: Model = {
+export const defaultModel = (location:Location): Model => ({
+  location,
   selectedVisitor: null,
   visitors: [
     defaultVisitor(1),
@@ -58,4 +52,4 @@ export const defaultModel: Model = {
     defaultVisitor(4),
     defaultVisitor(5)
   ]
-}
+})

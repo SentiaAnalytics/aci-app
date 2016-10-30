@@ -3,13 +3,15 @@ import React from 'react'
 import Navbar from '../navbar/Navbar.js'
 import Header from '../header/Header.js'
 import {curry} from 'ramda'
-import type {Location} from '../../Model.js'
 import {Tabs, Tab} from '../tabs/Tabs.js'
 
 type Props = {
+  dispatch: Function,
+  location: Location,
   children?: any[]
 }
-export default curry((dispatch, props: Props, location: Location) => {
+export default (props: Props) => {
+  const {dispatch} = props
     return (
       <div className="flex-column">
         <div className="bg-primary text-white">
@@ -25,7 +27,7 @@ export default curry((dispatch, props: Props, location: Location) => {
           <h1> Dashboard</h1>
           </div>
         </div>
-        <Navbar/>
+        <Navbar dispatch={dispatch} location={location}/>
       </div>
     )
-})
+}

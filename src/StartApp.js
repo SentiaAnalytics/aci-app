@@ -5,15 +5,13 @@ import ReactDOM from 'react-dom';
 import {install} from 'redux-loop'
 import {createStore} from 'redux'
 
-
-
 const reduxExtension = typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : x => x;
 
 type Props = {
   view: Function,
   update: Function,
   model: Object,
-  root: any
+  root: Object
 }
 
 export default ({view, update, model, root}:Props) => {
